@@ -1,0 +1,87 @@
+#header {
+  font-family: 'Roboto-Mono', monospace;
+}
+
+#title {
+  font-size: 24px;
+  color: #666;
+  font-variant: small-caps;
+
+}
+
+ul.nav {
+  list-style: none;
+  margin: 0px;
+
+}
+
+#nav {
+  justify-content: flex-end;
+  color: #6A9FFC ;
+}
+
+.nav li {
+  display: inline-block;
+  margin: none;
+  padding: 1em;
+}
+
+.nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav :hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.header {
+  width: 95%;
+  min-height: 100px;
+  margin: 0 auto;
+  display: -webkit-flex; /* Safari */
+  display: flex; /* Standard syntax */
+}
+
+.header .column{
+  padding: 10px;
+  align-items: center;
+  display: flex;
+  -webkit-flex: 1; /* Safari */
+  -ms-flex: 1; /* IE 10 */
+  flex: 1; /* Standard syntax */
+}
+
+.content {
+  min-height: 600px;
+  display: flex;
+  margin: 0 auto;
+  width: 95%;
+  background: #eee;
+  overflow: hidden;
+}
+
+#infoCard {
+  position: relative;
+  left: -50%;
+  transition: left 0.5s;
+  padding: 1em;
+  font-family: 'Roboto-Mono', monospace;
+  background-color: #fff;
+  opacity: 0.5;
+  width: 50%;
+}
+
+#infoCard.visible {
+  position: relative;
+  left: 0;
+}
+
+.infoHeader {
+  font-variant: small-caps;
+  font-size: 28px;
+}
