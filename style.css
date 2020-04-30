@@ -65,6 +65,24 @@ ul.nav {
   overflow: hidden;
 }
 
+#map {
+  position: absolute;
+  top: 12%;
+  bottom: 0%;
+  width: 95%;  */
+}
+
+#b1 {
+  /* position: absolute;
+  height: 100px;
+  width: 100px; */
+  background-color: #4499AA
+}
+
+#b2 {
+  background-color: #aa4466
+}
+
 #infoCard {
   position: relative;
   left: -50%;
@@ -85,3 +103,5 @@ ul.nav {
   font-variant: small-caps;
   font-size: 28px;
 }
+
+body { margin: 0; padding: 0; }

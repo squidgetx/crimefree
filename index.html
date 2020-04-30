@@ -1,6 +1,8 @@
 <html>
   <head>
     <script src="script.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>
@@ -20,16 +22,21 @@
           </ul>
         </div>
       </div>
+      <!-- <div id="b1"></div> -->
       <div class='content'>
+
+        <div id= "map">
+
+        </div>
         <div id='infoCard'>
           <p class='infoHeader'>atlanta, ga</p>
-          <p>Name</p>
+          <p id="b1">Center ATL</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing
 elit, sed do eiusmod tempor incididunt ut ero labore et
 dolore magna aliqua. Ut enim ad minim veniam.
           </p>
-          <p>Name</p>
+          <p id="b2">Fly To Chicago</p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing
 elit, sed do eiusmod tempor incididunt ut ero labore et
@@ -41,8 +48,8 @@ dolore magna aliqua. Ut enim ad minim veniam.
 elit, sed do eiusmod tempor incididunt ut ero labore et
 dolore magna aliqua. Ut enim ad minim veniam.
 </p>
-
         </div>
+
       </div>
     </div>
   </body>
