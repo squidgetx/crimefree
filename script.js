@@ -1,7 +1,10 @@
+let atlRedline;
+
 window.onload = () => {
-  fetch('.GAAtlanta1938.geojson')
+  fetch('./GAAtlanta1938.geojson')
     .then(resp => resp.json())
-    .then(console.log())
+    .then(json => atlRedline = json)
+    .then(res => console.log(atlRedline))
 
   mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
@@ -16,10 +19,10 @@ window.onload = () => {
     // add all information sources here
     // pull from APIs, included files
 
-    // map.addSource('atlRedline', {
-    //   'type': 'geojson',
-    //   'data': atlRedline
-    // })
+    map.addSource('atlRedline', {
+      'type': 'geojson',
+      'data': atlRedline
+    })
     map.addSource('neighborhood',{
           'type': 'geojson',
           'data': {
@@ -44,17 +47,40 @@ window.onload = () => {
       console.log('y')
       // show different information sources based on
       // events and local variables
+      // map.addLayer({
+      //       'id': '1',
+      //       'type': 'circle',
+      //       'source': 'neighborhood',
+      //       'paint': {
+      //         'circle-radius': 100,
+      //         'circle-color': '#22ff99',
+      //         'circle-opacity': 0.2
+      //       },
+      //       'filter': ['==', '$type', 'Point']
+      //     });
       map.addLayer({
-            'id': '1',
-            'type': 'circle',
-            'source': 'neighborhood',
-            'paint': {
-              'circle-radius': 100,
-              'circle-color': '#22ff99',
-              'circle-opacity': 0.2
-            },
-            'filter': ['==', '$type', 'Point']
-          });
+        'id': '1',
+        'type': 'fill',
+        'source': 'atlRedline',
+        'paint': {
+          'fill-color': '#44ffbb',
+          'fill-opacity': 0.4
+        },
+        'filter': ['==', 'holc_grade', 'A']
+      });
+    
+    }
+    if (event.target.id == 'b3'){
+      map.addLayer({
+        'id': '2',
+        'type': 'fill',
+        'source': 'atlRedline',
+        'paint': {
+          'fill-color': '#ee6655',
+          'fill-opacity': 0.4
+        },
+        'filter': ['==', 'holc_grade', 'D']
+      });
     }
     if (event.target.id == 'b2'){
       map.flyTo({

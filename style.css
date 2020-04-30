@@ -83,6 +83,10 @@ ul.nav {
   background-color: #aa4466
 }
 
+#b3 {
+  background-color: #aabb66
+}
+
 #infoCard {
   position: relative;
   left: -50%;
@@ -102,6 +106,7 @@ ul.nav {
 .infoHeader {
   font-variant: small-caps;
   font-size: 28px;
+  overflow: scroll;
 }
 
 body { margin: 0; padding: 0; }
