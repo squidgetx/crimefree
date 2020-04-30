@@ -68,7 +68,7 @@ window.onload = () => {
         },
         'filter': ['==', 'holc_grade', 'A']
       });
-    
+
     }
     if (event.target.id == 'b3'){
       map.addLayer({

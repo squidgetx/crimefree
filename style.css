@@ -76,15 +76,17 @@ ul.nav {
   /* position: absolute;
   height: 100px;
   width: 100px; */
-  background-color: #4499AA
+  background-color: #aabb66
+
 }
 
 #b2 {
-  background-color: #aa4466
+  background-color: #4499AA
+
 }
 
 #b3 {
-  background-color: #aabb66
+  background-color: #aa4466
 }
 
 #infoCard {
@@ -107,6 +109,7 @@ ul.nav {
   font-variant: small-caps;
   font-size: 28px;
   overflow: scroll;
+  max-height: 75%;
 }
 
 body { margin: 0; padding: 0; }
