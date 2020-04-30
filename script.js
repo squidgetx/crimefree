@@ -1,5 +1,8 @@
-
 window.onload = () => {
+  fetch('.GAAtlanta1938.geojson')
+    .then(resp => resp.json())
+    .then(console.log())
+
   mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA';
 
   var map = new mapboxgl.Map({
@@ -12,6 +15,11 @@ window.onload = () => {
   map.on('load', () => {
     // add all information sources here
     // pull from APIs, included files
+
+    // map.addSource('atlRedline', {
+    //   'type': 'geojson',
+    //   'data': atlRedline
+    // })
     map.addSource('neighborhood',{
           'type': 'geojson',
           'data': {
@@ -33,7 +41,7 @@ window.onload = () => {
     console.log(event.target.id)
     document.getElementById('infoCard').classList.toggle('visible');
     if (event.target.id == 'b1'){
-      // console.log(map)
+      console.log('y')
       // show different information sources based on
       // events and local variables
       map.addLayer({
