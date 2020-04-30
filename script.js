@@ -42,7 +42,10 @@ window.onload = () => {
     // For now just trigger on any click
     // eventually we would take arguments with the ID or string of the city or something
     console.log(event.target.id)
-    document.getElementById('infoCard').classList.toggle('visible');
+    if (event.target.id == ""){
+      // probably get more specific with this one ... 
+      document.getElementById('infoCard').classList.toggle('visible');
+    }
     if (event.target.id == 'b1'){
       console.log('y')
       // show different information sources based on

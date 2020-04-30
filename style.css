@@ -95,8 +95,8 @@ ul.nav {
   transition: left 0.5s;
   padding: 1em;
   font-family: 'Roboto-Mono', monospace;
-  background-color: #fff;
-  opacity: 0.5;
+  background-color: #fcfbff;
+  opacity: 0.8;
   width: 50%;
 }
 
