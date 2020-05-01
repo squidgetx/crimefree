@@ -65,14 +65,38 @@ ul.nav {
   overflow: hidden;
 }
 
+#map {
+  position: absolute;
+  top: 12%;
+  bottom: 0%;
+  width: 95%;  */
+}
+
+#b1 {
+  /* position: absolute;
+  height: 100px;
+  width: 100px; */
+  background-color: #aabb66
+
+}
+
+#b2 {
+  background-color: #4499AA
+
+}
+
+#b3 {
+  background-color: #aa4466
+}
+
 #infoCard {
   position: relative;
   left: -50%;
   transition: left 0.5s;
   padding: 1em;
   font-family: 'Roboto-Mono', monospace;
-  background-color: #fff;
-  opacity: 0.5;
+  background-color: #fcfbff;
+  opacity: 0.8;
   width: 50%;
 }
 
@@ -84,4 +108,8 @@ ul.nav {
 .infoHeader {
   font-variant: small-caps;
   font-size: 28px;
+  overflow: scroll;
+  max-height: 75%;
 }
+
+body { margin: 0; padding: 0; }
