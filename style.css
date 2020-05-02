@@ -64,7 +64,6 @@ ul.nav {
   height: 85%;
   margin: 0 auto;
   width: 95%;
-  background: #eee;
   overflow: hidden;
   position: relative;
 }
@@ -76,7 +75,6 @@ ul.nav {
   width: 100%;
   opacity: 0;
 }
-
 
 #map.ready {
   opacity: 1;
