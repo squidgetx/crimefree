@@ -83,10 +83,16 @@ let data = {
       'stories': [
         {
           'text': 'Thelma moved to Faribault 10 years ago because it seemed like a safe and peaceful environment to raise her family. She worked hard as a home health aide and certified nursing assistant, and in Faribault, she was eventually able to move to a house big enough for her three teenage kids and the younger children she was raising. But Thelma and her family got evicted from their home because of Faribault’s Rental Licensing Ordinance and its so-called Crime Free Housing Program. Harassing calls to the police from Thelma’s white neighbors had brought the police to her home many times, like when her kids were jumping on the trampoline or when a group of Black teenagers was standing in her yard. One neighbor even told Thelma to her face that Thelma should “go back where she came from.” In response, the police labelled Thelma and her family “problem tenants.” They threatened Thelma’s landlord with criminal prosecution under the ordinance unless she kicked Thelma and her family out. In a matter of months, Thelma’s family lost their home. ',
-          'name': '',
-          'place': 'ACLU',
+          'name': 'ACLU',
+          'place': '',
           'source': 'https://www.aclu.org/blog/racial-justice/race-and-economic-justice/minnesota-citys-ordinance-illegally-targets-people'
         },
+        {
+          'text': '"In 2015, Trotter-Ford (who is black) spanked one of his children and one of his then fiancée’s children with a belt. When a family member reported bruises on one child, the Rice County Social Services Department temporarily removed some of the children from the home. Less than two weeks later and (according to the lawsuit) before Trotter-Ford had been charged with anything, police ordered the whole family evicted. “It was all like, bam, bam, bam,” Trotter-Ford told me. “They”—social services—“came, then the eviction, and then I got charged.” (The lawyers for the City of Faribault contested some aspects of this account, saying that Trotter-Ford was not on the lease and that Trotter-Ford’s fiancée, Makayla, was already facing an eviction unrelated to the crime-free-housing ordinance which had been issued without “urging by the Faribault Police Department.” The ACLU acknowledged that Makayla had previously received a letter from her landlord about an eviction but argued that it did relate to the crime-free-housing program.) Once Trotter-Ford pled guilty to neglect and he and Makayla completed parenting classes, the Rice County Social Services Department returned the children to their care. The couple, who later married, struggled to find a new house in town—at least partly a result of criminal background checks mandated by Faribault’s crime-free-housing program, Trotter-Ford argued in his lawsuit. Eventually, the family left Faribault altogether."',
+          'name': 'The Atlantic',
+          'place': '',
+          'source': 'https://www.theatlantic.com/politics/archive/2020/03/crime-free-housing-lets-police-influence-landlords/605728/',
+        }
       ],
       'finalButton': {
         'color': ' #aa4466',
