@@ -127,17 +127,7 @@ let data = {
     'kansascity': {
     'title': 'kansas city, MO',
     'intro': 'Welcome to Kansas City',
-    'buttons': [{
-        'color': '#aabb66',
-        'buttonText': 'Click me',
-        'description': 'Lorem Ipsum..',
-        'function': () => alert('clicked me')
-      }, {
-        'color': '#4499AA',
-        'buttonText': 'Click me',
-        'description': 'dolor mosr',
-        'function': () => alert('clicked me 2'),
-      }],
+    'buttons': [],
       'stories': [
         {
           'text': 'On a february day last year in Kansas City, Missouri, Officer Aaron McKie sat at his desk in the back corner of the Metro Patrol Division, composing a letter to a landlord. “I have been notified by my Metro Patrol District Officers of ongoing issues at your rental property,” he typed on police-department letterhead. The property—a modest house a few doors down from a highway overpass—was home to a 31-year-old woman and her two small children. About a week earlier, according to a police report, officers had visited the house on a welfare check. But when the woman met them, one officer thought she smelled of PCP. Another spotted her boyfriend in a car nearby. In the car, the officers found a large bottle “filled with what appears to be PCP” (the report doesn’t elaborate) and arrested the woman and her boyfriend. “I need your help solving this problem,” McKie wrote to the woman’s landlord, inviting a follow-up phone call.',
