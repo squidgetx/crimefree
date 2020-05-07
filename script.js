@@ -96,6 +96,51 @@ let data = {
       ],
       'finalButton': {
         'color': ' #aa4466',
+        'buttonText': 'Fly to Kansas City',
+        'function': () => {
+          map.flyTo({
+            center: [ -94.34, 39.5 ],
+            essential: true});
+          loadCard(data['kansascity'])
+        }
+      },
+    },
+    'kansascity': {
+    'title': 'kansas city, MO',
+    'intro': 'Welcome to Kansas City',
+    'buttons': [{
+        'color': '#aabb66',
+        'buttonText': 'Click me',
+        'description': 'Lorem Ipsum..',
+        'function': () => alert('clicked me')
+      }, {
+        'color': '#4499AA',
+        'buttonText': 'Click me',
+        'description': 'dolor mosr',
+        'function': () => alert('clicked me 2'),
+      }],
+      'stories': [
+        {
+          'text': 'On a february day last year in Kansas City, Missouri, Officer Aaron McKie sat at his desk in the back corner of the Metro Patrol Division, composing a letter to a landlord. “I have been notified by my Metro Patrol District Officers of ongoing issues at your rental property,” he typed on police-department letterhead. The property—a modest house a few doors down from a highway overpass—was home to a 31-year-old woman and her two small children. About a week earlier, according to a police report, officers had visited the house on a welfare check. But when the woman met them, one officer thought she smelled of PCP. Another spotted her boyfriend in a car nearby. In the car, the officers found a large bottle “filled with what appears to be PCP” (the report doesn’t elaborate) and arrested the woman and her boyfriend. “I need your help solving this problem,” McKie wrote to the woman’s landlord, inviting a follow-up phone call.',
+          'name': 'The Atlantic',
+          'place': '',
+          'source': 'https://www.theatlantic.com/politics/archive/2020/03/crime-free-housing-lets-police-influence-landlords/605728/',
+        },
+        {
+          'text': 'McKie said most evictions result from tenants falling behind on their rent, not from alleged criminal activity. Singer, his colleague, said that even if landlords believe there is a lease violation, it is easier to just evict for nonpayment of rent. An eviction notice doesn’t have to mention the crime-free-housing program at all.',
+          'name': 'The Atlantic',
+          'place': '',
+          'source': 'https://www.theatlantic.com/politics/archive/2020/03/crime-free-housing-lets-police-influence-landlords/605728/',
+        },
+        {
+          'text': 'One married couple told a story of their eviction after one was arrested for robbing a store nearby; charges were later dropped. Chiquita Smith said she gave officers her name and address when they were called to settle a dispute between her cousin and a neighbor. Days later she was evicted, along with her 14-year-old son, for being an unauthorized tenant in a sister’s house. None of the tenants knew for certain if the crime-free-housing program had anything to do with their evictions, but their experiences echoed those that crime-free officers described.',
+          'name': 'The Atlantic',
+          'place': '',
+          'source': 'https://www.theatlantic.com/politics/archive/2020/03/crime-free-housing-lets-police-influence-landlords/605728/',
+        }
+      ],
+      'finalButton': {
+        'color': ' #aa4466',
         'buttonText': 'Fly to Atlanta',
         'function': () => {
           map.flyTo({
