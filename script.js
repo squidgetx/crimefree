@@ -2,6 +2,15 @@ let atlRedline;
 let atl2018;
 let map;
 
+const layerToggle = (layerString) => {
+  let vis = map.getLayoutProperty(layerString, 'visibility')
+  if (vis === 'visible'){
+    map.setLayoutProperty(layerString, 'visibility', 'none');
+  } else {
+    map.setLayoutProperty(layerString, 'visibility', 'visible');
+  }
+}
+
 let data = {
   'atlanta': {
     'title': 'atlanta, GA',
@@ -11,12 +20,7 @@ let data = {
       'buttonText': 'Show HOLC A Grade Areas',
       'description': '"A" areas are "hot spots" ... where good mortgage lenders ... are willing to make their maximum loans."',
       'function': () => {
-        let visibility = map.getLayoutProperty('atl_a_grade', 'visibility')
-        if (visibility === 'visible'){
-          map.setLayoutProperty('atl_a_grade', 'visibility', 'none');
-        } else {
-          map.setLayoutProperty('atl_a_grade', 'visibility', 'visible');
-        }
+        layerToggle('atl_a_grade')
       }
 
       // map.addLayer({
