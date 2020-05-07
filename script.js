@@ -40,63 +40,18 @@ let data = {
         'function': () => {
           layerToggle('atl_d_grade')
         }}, {
-          'color': '#aa22aa',
-          'buttonText': '2018 Census Non Hispanic Black',
-          'description': 'chloropleth',
-          'function': () => map.addLayer({
-              'id': 'atl_census_nhb',
-              'type': 'fill',
-              'source': 'atl2018',
-              'paint': {
-                'fill-color': [
-                  'interpolate', ['linear'],
-                  ['get', 'B03002004'],
-                  0, '#E0AAFF',
-                  2200,'#C77DFF',
-                  4300,'#9D4EDD',
-                  6500,'#7B2CBF',
-                  8600,'#5A189A',
-                  11000,'#3C096C'
-                  ],
-                  'fill-opacity': 0.4
-              },
-              'layout' : { 'visibility' : 'none' },
-              'filter': [
-                "all",
-                ['!=', 'name', 'United States'],
-                ['!=', 'name', 'Georgia'],
-                ['!=', 'name', 'Fulton County, GA'],
-              ]
-            }),
-          },{
+        'color': '#aa22aa',
+        'buttonText': '2018 ACS Non Hispanic Black',
+        'description': 'chloropleth',
+        'function': () => {
+          layerToggle('atl_census_nhb')
+        }},{
             'color': '#aa22aa',
-            'buttonText': '2018 Census Non Hispanic White',
+            'buttonText': '2018 ACS Non Hispanic White',
             'description': 'chloropleth',
-            'function': () => map.addLayer({
-                'id': 'atl_census_nhw',
-                'type': 'fill',
-                'source': 'atl2018',
-                'paint': {
-                  'fill-color': [
-                    'interpolate', ['linear'],
-                    ['get', 'B03002003'],
-                    0, '#EFCBFF',
-                    2200,'#C77DFF',
-                    4300,'#9D4EDD',
-                    6500,'#7B2CBF',
-                    8600,'#5A189A',
-                    11000,'#3C096C'
-                    ],
-                    'fill-opacity': 0.4
-                },
-                'layout' : { 'visibility' : 'none' },
-                'filter': [
-                  "all",
-                  ['!=', 'name', 'United States'],
-                  ['!=', 'name', 'Georgia'],
-                  ['!=', 'name', 'Fulton County, GA'],
-                ]
-              }),
+            'function': () => {
+              layerToggle('atl_census_nhw')
+            },
             }
       ],
       'stories': [
@@ -288,6 +243,58 @@ window.onload = () => {
       'type' : 'geojson',
       'data' : atl2018
     })
+
+    map.addLayer({
+        'id': 'atl_census_nhb',
+        'type': 'fill',
+        'source': 'atl2018',
+        'paint': {
+          'fill-color': [
+            'interpolate', ['linear'],
+            ['get', 'B03002004'],
+            0, '#E0AAFF',
+            2200,'#C77DFF',
+            4300,'#9D4EDD',
+            6500,'#7B2CBF',
+            8600,'#5A189A',
+            11000,'#3C096C'
+            ],
+            'fill-opacity': 0.4
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': [
+          "all",
+          ['!=', 'name', 'United States'],
+          ['!=', 'name', 'Georgia'],
+          ['!=', 'name', 'Fulton County, GA'],
+        ]
+      })
+
+      map.addLayer({
+          'id': 'atl_census_nhw',
+          'type': 'fill',
+          'source': 'atl2018',
+          'paint': {
+            'fill-color': [
+              'interpolate', ['linear'],
+              ['get', 'B03002003'],
+              0, '#EFCBFF',
+              2200,'#C77DFF',
+              4300,'#9D4EDD',
+              6500,'#7B2CBF',
+              8600,'#5A189A',
+              11000,'#3C096C'
+              ],
+              'fill-opacity': 0.4
+          },
+          'layout' : { 'visibility' : 'none' },
+          'filter': [
+            "all",
+            ['!=', 'name', 'United States'],
+            ['!=', 'name', 'Georgia'],
+            ['!=', 'name', 'Fulton County, GA'],
+          ]
+        })
 
     map.addLayer({
         'id': 'atl_a_grade',
