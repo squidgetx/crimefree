@@ -14,29 +14,29 @@ const layerToggle = (layerString) => {
 let data = {
   'atlanta': {
     'title': 'atlanta, GA',
-    'intro': 'Welcome to Atlanta. In the 1950s, the Home Owners’ Loan Corporation (HOLC), instituted the practice of “red lining” minority areas—identifying them on color-coded maps as neighborhoods in decline and decay, where property values were in doubt and, therefore, where loans were strongly discouraged as a risky investment. </br></br> The Federal Housing Administration (FHA) and, after 1944, the Veterans’ Administration (VA) adopted HOLC standards in their own massive loan programs to home builders and buyers. </br></br> "A" areas are "hot spots ... where good mortgage lenders ... are willing to make their maximum loans."',
+    'intro': 'Welcome to Atlanta. In the 1950s, the Home Owners’ Loan Corporation (HOLC), instituted the practice of “red lining” minority areas—identifying them on color-coded maps as neighborhoods in decline and decay, where property values were in doubt and, therefore, where loans were strongly discouraged as a risky investment. </br></br> The Federal Housing Administration (FHA) and, after 1944, the Veterans’ Administration (VA) adopted HOLC standards in their own massive loan programs to home builders and buyers. </br></br></br> "A" areas are "hot spots ... where good mortgage lenders ... are willing to make their maximum loans."',
     'buttons': [{
       'color': '#aabb66',
       'buttonText': 'Show HOLC A Grade Areas',
-      'description': '"B" grade areas were still considered to be desirable, but not as desirable for lenders as "A" areas.',
+      'description': '</br> "B" grade areas were still considered to be desirable, but not as desirable for lenders as "A" areas.',
       'function': () => {
         layerToggle('atl_a_grade')
       }},{
       'color': '#4499AA',
       'buttonText': 'Show B Grade Areas',
-      'description': 'In "C" grade areas, "good mortgage lenders are more conservative.""',
+      'description': '</br> In "C" grade areas, "good mortgage lenders are more conservative." This often meant the racial makeup of the neighborhood was changing--an "infiltration of a lower grade population."',
       'function': () => {
         layerToggle('atl_b_grade')
       }}, {
       'color': '#eecc00',
       'buttonText': 'Show C Grade Areas',
-      'description': 'HOLC described "D" grade areas as characterized by "detrimental influences [or an] undesirable population," and recommended that lenders refuse to make loans in these areas.',
+      'description': '</br> HOLC described "D" grade areas as characterized by "detrimental influences [or an] undesirable population," and recommended that lenders refuse to make loans in these areas.',
       'function': () => {
         layerToggle('atl_c_grade')
       }}, {
         'color': '#ee6655',
         'buttonText': 'Show HOLC D Grade Areas',
-        'description': '"D" areas have fully declined and are "characterized by detrimental influence in a pronounced degree." </br> </br> The red-lining data is from 1938. Look at how the I-20 highway, constructed in the 50s, bisects the city. Then use the buttons below to look at contemporary Atlanta.',
+        'description': '</br> The red-lining data is from 1938. Look at how the I-20 highway, constructed in the 50s, bisects the city. Then use the buttons below to look at demographics in contemporary Atlanta. </br> </br> From discriminatory lending practices to emminent domain and white flight, ',
         'function': () => {
           layerToggle('atl_d_grade')
         }}, {
