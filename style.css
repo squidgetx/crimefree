@@ -89,6 +89,7 @@ ul.nav {
 }
 
 #infoCard {
+  z-index: 999;
   position: absolute;
   left: -40%;
   transition: left 0.5s;
