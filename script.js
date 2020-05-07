@@ -23,13 +23,13 @@ let data = {
         layerToggle('atl_a_grade')
       }},{
       'color': '#4499AA',
-      'buttonText': 'Show B Grade Areas',
+      'buttonText': 'Show HOLC B Grade Areas',
       'description': '</br> In "C" grade areas, "good mortgage lenders are more conservative." This often meant the racial makeup of the neighborhood was changing--an "infiltration of a lower grade population."',
       'function': () => {
         layerToggle('atl_b_grade')
       }}, {
       'color': '#eecc00',
-      'buttonText': 'Show C Grade Areas',
+      'buttonText': 'Show HOLC C Grade Areas',
       'description': '</br> HOLC described "D" grade areas as characterized by "detrimental influences [or an] undesirable population," and recommended that lenders refuse to make loans in these areas.',
       'function': () => {
         layerToggle('atl_c_grade')
