@@ -10,16 +10,25 @@ let data = {
       'color': '#aabb66',
       'buttonText': 'Show HOLC A Grade Areas',
       'description': '"A" areas are "hot spots" ... where good mortgage lenders ... are willing to make their maximum loans."',
-      'function': () => map.addLayer({
-          'id': 'atl_a_grade',
-          'type': 'line',
-          'source': 'atlRedline',
-          'paint': {
-            'line-color': '#77ee77',
-            'line-width': 2
-          },
-          'filter': ['==', 'holc_grade', 'A']
-        }),
+      'function': () => {
+        let visibility = map.getLayoutProperty('atl_a_grade', 'visibility')
+        if (visibility === 'visible'){
+          map.setLayoutProperty('atl_a_grade', 'visibility', 'none');
+        } else {
+          map.setLayoutProperty('atl_a_grade', 'visibility', 'visible');
+        }
+      }
+
+      // map.addLayer({
+      //     'id': 'atl_a_grade',
+      //     'type': 'line',
+      //     'source': 'atlRedline',
+      //     'paint': {
+      //       'line-color': '#77ee77',
+      //       'line-width': 2
+      //     },
+      //     'filter': ['==', 'holc_grade', 'A']
+      //   }),
       },{
         'color': '#aabb66',
         'buttonText': 'Show B Grade Areas',
@@ -102,7 +111,7 @@ let data = {
                   'fill-color': [
                     'interpolate', ['linear'],
                     ['get', 'B03002003'],
-                    0, '#E0AAFF',
+                    0, '#EFCBFF',
                     2200,'#C77DFF',
                     4300,'#9D4EDD',
                     6500,'#7B2CBF',
@@ -309,6 +318,19 @@ window.onload = () => {
       'type' : 'geojson',
       'data' : atl2018
     })
+
+    map.addLayer({
+        'id': 'atl_a_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#77ee77',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'A']
+      })
+
     map.addSource('neighborhood',{
           'type': 'geojson',
           'data': {
