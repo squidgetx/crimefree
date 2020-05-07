@@ -2,6 +2,15 @@ let atlRedline;
 let atl2018;
 let map;
 
+const layerToggle = (layerString) => {
+  let vis = map.getLayoutProperty(layerString, 'visibility')
+  if (vis === 'visible'){
+    map.setLayoutProperty(layerString, 'visibility', 'none');
+  } else {
+    map.setLayoutProperty(layerString, 'visibility', 'visible');
+  }
+}
+
 let data = {
   'atlanta': {
     'title': 'atlanta, GA',
@@ -10,114 +19,39 @@ let data = {
       'color': '#aabb66',
       'buttonText': 'Show HOLC A Grade Areas',
       'description': '"A" areas are "hot spots" ... where good mortgage lenders ... are willing to make their maximum loans."',
-      'function': () => map.addLayer({
-          'id': 'atl_a_grade',
-          'type': 'line',
-          'source': 'atlRedline',
-          'paint': {
-            'line-color': '#77ee77',
-            'line-width': 2
-          },
-          'filter': ['==', 'holc_grade', 'A']
-        }),
-      },{
-        'color': '#aabb66',
-        'buttonText': 'Show B Grade Areas',
-        'description': 'B grade',
-        'function': () => map.addLayer({
-            'id': 'atl_b_grade',
-            'type': 'line',
-            'source': 'atlRedline',
-            'paint': {
-              'line-color': '#44ccff',
-              'line-width': 2
-            },
-            'filter': ['==', 'holc_grade', 'B']
-          }),
-        }, {
-          'color': '#aabb66',
-          'buttonText': 'Show C Grade Areas',
-          'description': 'B grade',
-          'function': () => map.addLayer({
-              'id': 'atl_c_grade',
-              'type': 'line',
-              'source': 'atlRedline',
-              'paint': {
-                'line-color': '#eecc00',
-                'line-width': 2
-              },
-              'filter': ['==', 'holc_grade', 'C']
-            }),
-          }, {
+      'function': () => {
+        layerToggle('atl_a_grade')
+      }},{
+      'color': '#aabb66',
+      'buttonText': 'Show B Grade Areas',
+      'description': 'B grade',
+      'function': () => {
+        layerToggle('atl_b_grade')
+      }}, {
+      'color': '#aabb66',
+      'buttonText': 'Show C Grade Areas',
+      'description': 'C grade',
+      'function': () => {
+        layerToggle('atl_c_grade')
+      }}, {
         'color': '#4499AA',
         'buttonText': 'Show HOLC D Grade Areas',
         'description': '"D" areas have fully declined and are "characterized by detrimental influence in a pronounced degree."',
-        'function': () => map.addLayer({
-            'id': 'atl_d_grade',
-            'type': 'line',
-            'source': 'atlRedline',
-            'paint': {
-              'line-color': '#ee6655',
-              'line-width': 2
-            },
-            'filter': ['==', 'holc_grade', 'D']
-          }),
-        }, {
-          'color': '#aa22aa',
-          'buttonText': '2018 Census Non Hispanic Black',
-          'description': 'chloropleth',
-          'function': () => map.addLayer({
-              'id': 'atl_census_nhb',
-              'type': 'fill',
-              'source': 'atl2018',
-              'paint': {
-                'fill-color': [
-                  'interpolate', ['linear'],
-                  ['get', 'B03002004'],
-                  0, '#E0AAFF',
-                  2200,'#C77DFF',
-                  4300,'#9D4EDD',
-                  6500,'#7B2CBF',
-                  8600,'#5A189A',
-                  11000,'#3C096C'
-                  ],
-                  'fill-opacity': 0.4
-              },
-              'filter': [
-                "all",
-                ['!=', 'name', 'United States'],
-                ['!=', 'name', 'Georgia'],
-                ['!=', 'name', 'Fulton County, GA'],
-              ]
-            }),
-          },{
+        'function': () => {
+          layerToggle('atl_d_grade')
+        }}, {
+        'color': '#aa22aa',
+        'buttonText': '2018 ACS Non Hispanic Black',
+        'description': 'chloropleth',
+        'function': () => {
+          layerToggle('atl_census_nhb')
+        }},{
             'color': '#aa22aa',
-            'buttonText': '2018 Census Non Hispanic White',
+            'buttonText': '2018 ACS Non Hispanic White',
             'description': 'chloropleth',
-            'function': () => map.addLayer({
-                'id': 'atl_census_nhw',
-                'type': 'fill',
-                'source': 'atl2018',
-                'paint': {
-                  'fill-color': [
-                    'interpolate', ['linear'],
-                    ['get', 'B03002003'],
-                    0, '#E0AAFF',
-                    2200,'#C77DFF',
-                    4300,'#9D4EDD',
-                    6500,'#7B2CBF',
-                    8600,'#5A189A',
-                    11000,'#3C096C'
-                    ],
-                    'fill-opacity': 0.4
-                },
-                'filter': [
-                  "all",
-                  ['!=', 'name', 'United States'],
-                  ['!=', 'name', 'Georgia'],
-                  ['!=', 'name', 'Fulton County, GA'],
-                ]
-              }),
+            'function': () => {
+              layerToggle('atl_census_nhw')
+            },
             }
       ],
       'stories': [
@@ -286,7 +220,7 @@ window.onload = () => {
   fetch('./atl2018.geojson')
     .then(resp => resp.json())
     .then(json => atl2018 = json)
-    .then(res => console.log(atl2018))
+    // .then(res => console.log(atl2018))
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiZHdmcmllcyIsImEiOiJjazlkMnFvNGIwOTV1M29yM2IxeDI4bHphIn0.kQk5hrC-EUxqzjlWxP43ew';
 
@@ -309,6 +243,107 @@ window.onload = () => {
       'type' : 'geojson',
       'data' : atl2018
     })
+
+    map.addLayer({
+        'id': 'atl_census_nhb',
+        'type': 'fill',
+        'source': 'atl2018',
+        'paint': {
+          'fill-color': [
+            'interpolate', ['linear'],
+            ['get', 'B03002004'],
+            0, '#E0AAFF',
+            2200,'#C77DFF',
+            4300,'#9D4EDD',
+            6500,'#7B2CBF',
+            8600,'#5A189A',
+            11000,'#3C096C'
+            ],
+            'fill-opacity': 0.4
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': [
+          "all",
+          ['!=', 'name', 'United States'],
+          ['!=', 'name', 'Georgia'],
+          ['!=', 'name', 'Fulton County, GA'],
+        ]
+      })
+
+      map.addLayer({
+          'id': 'atl_census_nhw',
+          'type': 'fill',
+          'source': 'atl2018',
+          'paint': {
+            'fill-color': [
+              'interpolate', ['linear'],
+              ['get', 'B03002003'],
+              0, '#EFCBFF',
+              2200,'#C77DFF',
+              4300,'#9D4EDD',
+              6500,'#7B2CBF',
+              8600,'#5A189A',
+              11000,'#3C096C'
+              ],
+              'fill-opacity': 0.4
+          },
+          'layout' : { 'visibility' : 'none' },
+          'filter': [
+            "all",
+            ['!=', 'name', 'United States'],
+            ['!=', 'name', 'Georgia'],
+            ['!=', 'name', 'Fulton County, GA'],
+          ]
+        })
+
+    map.addLayer({
+        'id': 'atl_a_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#77ee77',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'A']
+    })
+
+    map.addLayer({
+        'id': 'atl_b_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#44ccff',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'B']
+    })
+
+    map.addLayer({
+        'id': 'atl_c_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#eecc00',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'C']
+    })
+
+    map.addLayer({
+        'id': 'atl_d_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#ee6655',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'D']
+    })
+
     map.addSource('neighborhood',{
           'type': 'geojson',
           'data': {
