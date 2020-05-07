@@ -21,61 +21,25 @@ let data = {
       'description': '"A" areas are "hot spots" ... where good mortgage lenders ... are willing to make their maximum loans."',
       'function': () => {
         layerToggle('atl_a_grade')
-      }
-
-      // map.addLayer({
-      //     'id': 'atl_a_grade',
-      //     'type': 'line',
-      //     'source': 'atlRedline',
-      //     'paint': {
-      //       'line-color': '#77ee77',
-      //       'line-width': 2
-      //     },
-      //     'filter': ['==', 'holc_grade', 'A']
-      //   }),
-      },{
-        'color': '#aabb66',
-        'buttonText': 'Show B Grade Areas',
-        'description': 'B grade',
-        'function': () => map.addLayer({
-            'id': 'atl_b_grade',
-            'type': 'line',
-            'source': 'atlRedline',
-            'paint': {
-              'line-color': '#44ccff',
-              'line-width': 2
-            },
-            'filter': ['==', 'holc_grade', 'B']
-          }),
-        }, {
-          'color': '#aabb66',
-          'buttonText': 'Show C Grade Areas',
-          'description': 'B grade',
-          'function': () => map.addLayer({
-              'id': 'atl_c_grade',
-              'type': 'line',
-              'source': 'atlRedline',
-              'paint': {
-                'line-color': '#eecc00',
-                'line-width': 2
-              },
-              'filter': ['==', 'holc_grade', 'C']
-            }),
-          }, {
+      }},{
+      'color': '#aabb66',
+      'buttonText': 'Show B Grade Areas',
+      'description': 'B grade',
+      'function': () => {
+        layerToggle('atl_b_grade')
+      }}, {
+      'color': '#aabb66',
+      'buttonText': 'Show C Grade Areas',
+      'description': 'C grade',
+      'function': () => {
+        layerToggle('atl_c_grade')
+      }}, {
         'color': '#4499AA',
         'buttonText': 'Show HOLC D Grade Areas',
         'description': '"D" areas have fully declined and are "characterized by detrimental influence in a pronounced degree."',
-        'function': () => map.addLayer({
-            'id': 'atl_d_grade',
-            'type': 'line',
-            'source': 'atlRedline',
-            'paint': {
-              'line-color': '#ee6655',
-              'line-width': 2
-            },
-            'filter': ['==', 'holc_grade', 'D']
-          }),
-        }, {
+        'function': () => {
+          layerToggle('atl_d_grade')
+        }}, {
           'color': '#aa22aa',
           'buttonText': '2018 Census Non Hispanic Black',
           'description': 'chloropleth',
@@ -96,6 +60,7 @@ let data = {
                   ],
                   'fill-opacity': 0.4
               },
+              'layout' : { 'visibility' : 'none' },
               'filter': [
                 "all",
                 ['!=', 'name', 'United States'],
@@ -124,6 +89,7 @@ let data = {
                     ],
                     'fill-opacity': 0.4
                 },
+                'layout' : { 'visibility' : 'none' },
                 'filter': [
                   "all",
                   ['!=', 'name', 'United States'],
@@ -299,7 +265,7 @@ window.onload = () => {
   fetch('./atl2018.geojson')
     .then(resp => resp.json())
     .then(json => atl2018 = json)
-    .then(res => console.log(atl2018))
+    // .then(res => console.log(atl2018))
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiZHdmcmllcyIsImEiOiJjazlkMnFvNGIwOTV1M29yM2IxeDI4bHphIn0.kQk5hrC-EUxqzjlWxP43ew';
 
@@ -333,7 +299,43 @@ window.onload = () => {
         },
         'layout' : { 'visibility' : 'none' },
         'filter': ['==', 'holc_grade', 'A']
-      })
+    })
+
+    map.addLayer({
+        'id': 'atl_b_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#44ccff',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'B']
+    })
+
+    map.addLayer({
+        'id': 'atl_c_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#eecc00',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'C']
+    })
+
+    map.addLayer({
+        'id': 'atl_d_grade',
+        'type': 'line',
+        'source': 'atlRedline',
+        'paint': {
+          'line-color': '#ee6655',
+          'line-width': 2
+        },
+        'layout' : { 'visibility' : 'none' },
+        'filter': ['==', 'holc_grade', 'D']
+    })
 
     map.addSource('neighborhood',{
           'type': 'geojson',
