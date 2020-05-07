@@ -1,5 +1,7 @@
 let atlRedline;
+let chiRedline;
 let atl2018;
+let chi2018;
 let map;
 
 let data = {
@@ -37,7 +39,7 @@ let data = {
         }, {
           'color': '#aabb66',
           'buttonText': 'Show C Grade Areas',
-          'description': 'B grade',
+          'description': 'C grade',
           'function': () => map.addLayer({
               'id': 'atl_c_grade',
               'type': 'line',
@@ -103,11 +105,11 @@ let data = {
                     'interpolate', ['linear'],
                     ['get', 'B03002003'],
                     0, '#E0AAFF',
-                    2200,'#C77DFF',
-                    4300,'#9D4EDD',
-                    6500,'#7B2CBF',
-                    8600,'#5A189A',
-                    11000,'#3C096C'
+                    1300,'#C77DFF',
+                    2600,'#9D4EDD',
+                    3900,'#7B2CBF',
+                    5200,'#5A189A',
+                    6500,'#3C096C'
                     ],
                     'fill-opacity': 0.4
                 },
@@ -136,16 +138,118 @@ let data = {
     'title': 'chicago, IL',
     'intro': 'Welcome to Chicago',
     'buttons': [{
+      'color': '#aabb66',
+      'buttonText': 'Show A Grade Areas',
+      'description': '"A" areas are "hot spots" ... where good mortgage lenders ... are willing to make their maximum loans."',
+      'function': () => map.addLayer({
+          'id': 'chi_a_grade',
+          'type': 'line',
+          'source': 'chiRedline',
+          'paint': {
+            'line-color': '#77ee77',
+            'line-width': 2
+          },
+          'filter': ['==', 'holc_grade', 'A']
+        }),
+      },{
         'color': '#aabb66',
-        'buttonText': 'Click me',
-        'description': 'Lorem Ipsum..',
-        'function': () => alert('clicked me')
-      }, {
+        'buttonText': 'Show B Grade Areas',
+        'description': 'B grade',
+        'function': () => map.addLayer({
+            'id': 'chi_b_grade',
+            'type': 'line',
+            'source': 'chiRedline',
+            'paint': {
+              'line-color': '#44ccff',
+              'line-width': 2
+            },
+            'filter': ['==', 'holc_grade', 'B']
+          }),
+        }, {
+          'color': '#aabb66',
+          'buttonText': 'Show C Grade Areas',
+          'description': 'B grade',
+          'function': () => map.addLayer({
+              'id': 'chi_c_grade',
+              'type': 'line',
+              'source': 'chiRedline',
+              'paint': {
+                'line-color': '#eecc00',
+                'line-width': 2
+              },
+              'filter': ['==', 'holc_grade', 'C']
+            }),
+          }, {
         'color': '#4499AA',
-        'buttonText': 'Click me',
-        'description': 'dolor mosr',
-        'function': () => alert('clicked me 2'),
-      }],
+        'buttonText': 'Show D Grade Areas',
+        'description': '"D" areas have fully declined and are "characterized by detrimental influence in a pronounced degree."',
+        'function': () => map.addLayer({
+            'id': 'chi_d_grade',
+            'type': 'line',
+            'source': 'chiRedline',
+            'paint': {
+              'line-color': '#ee6655',
+              'line-width': 2
+            },
+            'filter': ['==', 'holc_grade', 'D']
+          }),
+        },{
+          'color': '#aa22aa',
+          'buttonText': '2018 Census Non Hispanic Black',
+          'description': 'chloropleth',
+          'function': () => map.addLayer({
+              'id': 'chi_census_nhb',
+              'type': 'fill',
+              'source': 'chi2018',
+              'paint': {
+                'fill-color': [
+                  'interpolate', ['linear'],
+                  ['get', 'B03002004'],
+                  0, '#E0AAFF',
+                  2200,'#C77DFF',
+                  4300,'#9D4EDD',
+                  6500,'#7B2CBF',
+                  8600,'#5A189A',
+                  11000,'#3C096C'
+                  ],
+                  'fill-opacity': 0.4
+              },
+              'filter': [
+                "all",
+                ['!=', 'name', 'United States'],
+                ['!=', 'name', 'Illinois'],
+                ['!=', 'name', 'Fulton County, GA'],
+              ]
+            }),
+          },{
+            'color': '#aa22aa',
+            'buttonText': '2018 Census Non Hispanic White',
+            'description': 'chloropleth',
+            'function': () => map.addLayer({
+                'id': 'chi_census_nhw',
+                'type': 'fill',
+                'source': 'chi2018',
+                'paint': {
+                  'fill-color': [
+                    'interpolate', ['linear'],
+                    ['get', 'B03002003'],
+                    0, '#E0AAFF',
+                    2200,'#C77DFF',
+                    4300,'#9D4EDD',
+                    6500,'#7B2CBF',
+                    8600,'#5A189A',
+                    11000,'#3C096C'
+                    ],
+                    'fill-opacity': 0.4
+                },
+                'filter': [
+                  "all",
+                  ['!=', 'name', 'United States'],
+                  ['!=', 'name', 'Illinois'],
+                  ['!=', 'name', 'Fulton County, GA'],
+                ]
+              }),
+            }],
       'stories': "Chicago is the windy city",
       'finalButton': {
         'color': ' #aa4466',
@@ -205,7 +309,17 @@ window.onload = () => {
   fetch('./atl2018.geojson')
     .then(resp => resp.json())
     .then(json => atl2018 = json)
-    .then(res => console.log(atl2018))
+    // .then(res => console.log(atl2018))
+
+  fetch('./ILChicago1940.geojson')
+    .then(resp => resp.json())
+    .then(json => chiRedline = json)
+    // .then(res => console.log(chiRedline))
+
+  fetch('./chi2018.geojson')
+    .then(resp => resp.json())
+    .then(json => chi2018 = json)
+    // .then(res => console.log(chi2018))
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiZHdmcmllcyIsImEiOiJjazlkMnFvNGIwOTV1M29yM2IxeDI4bHphIn0.kQk5hrC-EUxqzjlWxP43ew';
 
@@ -224,9 +338,17 @@ window.onload = () => {
       'type': 'geojson',
       'data': atlRedline
     })
+    map.addSource('chiRedline',{
+      'type' : 'geojson',
+      'data' : chiRedline
+    })
     map.addSource('atl2018',{
       'type' : 'geojson',
       'data' : atl2018
+    })
+    map.addSource('chi2018',{
+      'type' : 'geojson',
+      'data' : chi2018
     })
     map.addSource('neighborhood',{
           'type': 'geojson',
