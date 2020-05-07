@@ -57,18 +57,18 @@ let data = {
       ],
       'finalButton': {
         'color': ' #aa4466',
-        'buttonText': 'Fly to Chicago',
+        'buttonText': 'Fly to Faribault',
         'function': () => {
           map.flyTo({
-            center: [ -87.62, 41.87 ],
-            essential: true});
-          loadCard(data['chicago'])
+            center: [ -93.27, 44.29 ],
+          });
+          loadCard(data['faribault'])
         }
       },
   },
-  'chicago': {
-    'title': 'chicago, IL',
-    'intro': 'Welcome to Chicago',
+  'faribault': {
+    'title': 'faribault, MN',
+    'intro': 'Welcome to Faribault',
     'buttons': [{
         'color': '#aabb66',
         'buttonText': 'Click me',
@@ -80,7 +80,14 @@ let data = {
         'description': 'dolor mosr',
         'function': () => alert('clicked me 2'),
       }],
-      'stories': "Chicago is the windy city",
+      'stories': [
+        {
+          'text': 'Thelma moved to Faribault 10 years ago because it seemed like a safe and peaceful environment to raise her family. She worked hard as a home health aide and certified nursing assistant, and in Faribault, she was eventually able to move to a house big enough for her three teenage kids and the younger children she was raising. But Thelma and her family got evicted from their home because of Faribault’s Rental Licensing Ordinance and its so-called Crime Free Housing Program. Harassing calls to the police from Thelma’s white neighbors had brought the police to her home many times, like when her kids were jumping on the trampoline or when a group of Black teenagers was standing in her yard. One neighbor even told Thelma to her face that Thelma should “go back where she came from.” In response, the police labelled Thelma and her family “problem tenants.” They threatened Thelma’s landlord with criminal prosecution under the ordinance unless she kicked Thelma and her family out. In a matter of months, Thelma’s family lost their home. ',
+          'name': '',
+          'place': 'ACLU',
+          'source': 'https://www.aclu.org/blog/racial-justice/race-and-economic-justice/minnesota-citys-ordinance-illegally-targets-people'
+        },
+      ],
       'finalButton': {
         'color': ' #aa4466',
         'buttonText': 'Fly to Atlanta',
@@ -128,6 +135,7 @@ let loadCard = (card) => {
   cardEl.appendChild(buttonSection)
   cardEl.appendChild(stories)
   cardEl.appendChild(finalButton)
+  cardEl.scrollTop = 0
 }
 
 
